@@ -6,7 +6,16 @@ module.exports = (sequelize, DataTypes) => {
   class Cita extends Model {
    
     static associate(models) {
-      
+
+
+      Cita.belongsToMany(models,Odontologo,{
+        foreignKey: "id_odontologo"
+      });
+
+
+      Cita.belongsToMany(models,Paciente,{
+        foreignKey: "id_paciente"
+      });
     }
   }
   Cita.init({

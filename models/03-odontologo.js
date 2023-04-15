@@ -9,13 +9,13 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       Odontologo.belongsTo(models.Usuario,{
-        foreignKey: "id_usuario"
+        foreignKey: "id_usuario",
       });
 
       
       Odontologo.belongsToMany(models.Paciente, {
         through: "Cita" ,
-        foreignKey: "id_odontologo"
+        foreignKey: "id_odontologo",
       });
     }
   }

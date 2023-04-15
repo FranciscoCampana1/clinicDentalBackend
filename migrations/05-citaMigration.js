@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         refereces: {
           model: "odontologos",
-          key: "id"
+          key: "id",
         }
 
       },
@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         refereces: {
           model: "pacientes",
-          key: "id"
+          key: "id",
         }
 
       },

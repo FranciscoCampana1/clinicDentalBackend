@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       Usuario.belongsTo(models.Paciente, {
-        foreignKey: "id_paciente"
+        foreignKey: "id_usuario",
       })
     
     
