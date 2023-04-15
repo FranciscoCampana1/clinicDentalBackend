@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
 
 
-      Paciente.hasMany(models.Cita, {
+      Paciente.belongsToMany(models.Odontologo, {
+        through: "Cita" ,
         foreignKey: "id_paciente"
       });
 

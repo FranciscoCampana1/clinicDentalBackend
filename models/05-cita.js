@@ -7,16 +7,6 @@ module.exports = (sequelize, DataTypes) => {
    
     static associate(models) {
       
-      
-      Cita.belongsTo(models.Odontologo, {
-        foreignKey: "id_odontologo"
-      })
-      
-      Cita.belongsTo(models.Paciente, {
-        foreignKey: "id_paciente"
-      })
-
-
     }
   }
   Cita.init({
@@ -43,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Cita',
+    tableName: 'citas'
   });
   return Cita;
 };

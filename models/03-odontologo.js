@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id_usuario"
       });
 
-      Odontologo.hasMany(models.Cita, {
+      
+      Odontologo.belongsToMany(models.Paciente, {
+        through: "Cita" ,
         foreignKey: "id_odontologo"
       });
     }
@@ -24,7 +26,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     matriculaOdontologo: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        min:8
+      }
     }
   }, {
     sequelize,
