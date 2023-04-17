@@ -1,4 +1,4 @@
-# D&J Clinic
+# Clínica Dental
 
 <details>
   <summary>Contenido 📝</summary>
