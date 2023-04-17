@@ -40,11 +40,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isAlpha,
+          isAlpha:true
         },
       },
       fecha_de_nacimiento: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
         validate: {
           isDate: true,

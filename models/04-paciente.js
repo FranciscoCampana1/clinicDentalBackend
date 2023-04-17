@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
       Paciente.belongsToMany(models.Odontologo, {
-        through: "Cita" ,
+        through: "citas" ,
         foreignKey: "id_paciente"
       });
 
