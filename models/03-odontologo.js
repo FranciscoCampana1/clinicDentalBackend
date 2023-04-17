@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   Odontologo.init({
     id_usuario: {
       type: DataTypes.INTEGER,
+      unique: true,
       allowNull:false
     },
     matriculaOdontologo: {

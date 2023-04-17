@@ -4,9 +4,8 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', authController.getAll);
-
+router.post('/register', authController.register);
 router.post('/login', authController.login);
 
-router.post('/register', authController.register);
 
 module.exports = router;

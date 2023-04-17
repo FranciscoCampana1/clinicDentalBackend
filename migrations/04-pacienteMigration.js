@@ -11,7 +11,9 @@ module.exports = {
       },
       id_usuario: {
         type: Sequelize.INTEGER,
+
         references: {
+          unique:true,
           model: "usuarios",
           key: "id",
         }

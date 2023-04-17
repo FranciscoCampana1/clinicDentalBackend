@@ -4,10 +4,7 @@ const indexRouter = require("./routes/index");
 const usuariosRouter = require("./routes/users");
 
 /* home page */
-router.use("/", indexRouter);
-
 router.use("/usuarios", usuariosRouter)
-
 
 
 module.exports = router;
