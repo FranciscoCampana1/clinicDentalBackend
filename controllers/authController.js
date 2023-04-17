@@ -51,7 +51,7 @@ authController.register = async (req, res) => {
     if (nombre === undefined || email === undefined || password === undefined) {
       return res.json({
         success: false,
-        message: "Debe completar todos los campos requeridos",
+        message: "Debe completar correctamente todos los campos requeridos",
       });
     }
     const nuevoUsuario = await Usuario.create({
@@ -123,3 +123,4 @@ authController.login = async (req, res) => {
 };
 
 module.exports = authController;
+
