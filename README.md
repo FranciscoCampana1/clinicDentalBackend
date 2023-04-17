@@ -8,7 +8,6 @@
     <li><a href="#diagrama-bd">Diagrama</a></li>
     <li><a href="#instalación-en-local">Instalación</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
-    <li><a href="#agradecimientos">Agradecimientos</a></li>
   </ol>
 </details>
 
