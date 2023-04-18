@@ -1,6 +1,6 @@
 "use strict";
 const { Op } = require("sequelize");
-
+const {hash} = require("../_util/hash");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
    async up(queryInterface, Sequelize) {
@@ -13,7 +13,7 @@ module.exports = {
                fecha_de_nacimiento: "1996-05-01",
                email: "jose@jose.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role: 1
@@ -24,7 +24,7 @@ module.exports = {
                fecha_de_nacimiento: "2002-09-10",
                email: "marta@jose.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role: 1
@@ -35,7 +35,7 @@ module.exports = {
                fecha_de_nacimiento: "1966-07-23",
                email: "marta@joseadg.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:1
@@ -46,7 +46,7 @@ module.exports = {
                fecha_de_nacimiento: "1966-07-23",
                email: "marta@joseadg.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:1
@@ -57,7 +57,7 @@ module.exports = {
                fecha_de_nacimiento: "1966-07-23",
                email: "marta@joseadg.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:1
@@ -90,7 +90,7 @@ module.exports = {
                fecha_de_nacimiento: "1966-07-23",
                email: "marta@joseadg.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:2

@@ -3,21 +3,25 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("citas", {
-     
-      id_odontologo: {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
+      },
+
+      id_odontologo: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        refereces: {
+        references: {
           model: "odontologos",
           key: "id",
         },
       },
       id_paciente: {
-        primaryKey:true,
         type: Sequelize.INTEGER,
         allowNull: false,
-        refereces: {
+        references: {
           model: "pacientes",
           key: "id",
         },

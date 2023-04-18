@@ -10,6 +10,7 @@ const {
 
 authController.getAll = async (req, res) => {
   let { page } = req.query;
+  LIMIT = 3;
   try {
     const count = await Usuario.count();
     const pages = getPagesFromCountLimit(count, LIMIT);
@@ -17,10 +18,10 @@ authController.getAll = async (req, res) => {
     const usuarios = await Usuario.findAll({
       limit: LIMIT,
       offset: (page - 1) * LIMIT,
-      attributes: {
-        exclude: [],
-      },
-      include: [],
+      // attributes: {
+      //   exclude: [],
+      // },
+      // include: [],
     });
     sendSuccsessResponse(res, 200, {
       info: {

@@ -5,8 +5,8 @@ const isVerifyToken = require('../middleware/verifyToken')
 
 /* GET users listing. */
 router.get('/', authController.getAll);
-router.post('/register',isVerifyToken, authController.register);
-router.post('/login', authController.login);
+router.post('/register', authController.register);
+router.post('/login',authController.login);
 
 
 module.exports = router;
