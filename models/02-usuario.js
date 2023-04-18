@@ -61,11 +61,6 @@ module.exports = (sequelize, DataTypes) => {
       telefono: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-          inInt: true,
-          isNumeric: true,
-          min: 9
-        },
       },
       password: {
         type: DataTypes.STRING,

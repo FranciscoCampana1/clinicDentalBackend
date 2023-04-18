@@ -88,7 +88,7 @@ module.exports = {
                nombre: "odontologo pepe",
                apellidos: "Pérez",
                fecha_de_nacimiento: "1966-07-23",
-               email: "marta@joseadg.com",
+               email: "Cesar@joseadg.com",
                telefono: 1233456789,
                password: hash("12345678"),
                createdAt: new Date(),

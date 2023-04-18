@@ -7,8 +7,9 @@ const verifyToken = (req, res, next) => {
   }
   try {
     const decoded = decodedToken(token);
-    req.user_id = decoded.user_id;
-    req.user_role = decoded.user_role;
+    console.log(decoded)
+    req.usuario_id = decoded.usuario_id;
+    req.usuario_role = decoded.usuario_role;
     next();
   } catch (error) {
     sendErrorResponse(res, 400, "Token invalido", error);

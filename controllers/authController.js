@@ -7,6 +7,9 @@ const {
   sendSuccsessResponse,
   sendErrorResponse,
 } = require("../_util/sendResponse");
+const {compareHash, hash} = require("../_util/hash");
+const {generateToken} = require("../_util/token");
+const { where } = require("sequelize");
 
 authController.getAll = async (req, res) => {
   let { page } = req.query;
@@ -33,7 +36,7 @@ authController.getAll = async (req, res) => {
       results: usuarios,
     });
   } catch (error) {
-    sendErrorResponse(res, 500, "Error retreinving users", error);
+    sendErrorResponse(res, 500, "Error al recuperar usuarios", error);
     res.json(error);
   }
 };
@@ -48,7 +51,9 @@ authController.register = async (req, res) => {
       password,
       fecha_de_nacimiento,
     } = req.body;
+
     const encryptedPassword = bcrypt.hashSync(password, 10);
+
     if (nombre === undefined || email === undefined || password === undefined) {
       return res.json({
         success: false,
@@ -62,7 +67,7 @@ authController.register = async (req, res) => {
       email: email,
       password: encryptedPassword,
       fecha_de_nacimiento: fecha_de_nacimiento,
-      role_id: 2,
+      id_role: 1,
     });
     const nuevoPaciente = await Paciente.create({
       id_usuario: nuevoUsuario.id,
@@ -83,45 +88,46 @@ authController.register = async (req, res) => {
 };
 
 authController.login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return sendErrorResponse(res, 400, "Debe completar los campos requeridos correctamente");
+  }
   try {
-    const { email, password } = req.body;
-
     const usuario = await Usuario.findOne({ where: { email: email } });
     if (!usuario) {
-      return res.send("Credenciales incorrectas");
+      return sendErrorResponse(res, 404, "Email no existente");
     }
-
-    const checkPassword = bcrypt.compareSync(password, user.password);
-    if (!checkPassword) {
-      return res.send("Credenciales incorrectas");
+    const isValidPassword = compareHash(password, usuario.password);
+    if (!isValidPassword) {
+      return sendErrorResponse(res, 401, "Contraseña incorrecta");
     }
-
-    //Token propio para autenticar el usuario
-    const token = jwt.sign(
-      {
-        id_usuario: usuario.id,
-        nombre: usuario.nombre,
-        apellidos: usuario.apellidos,
-        telefono: usuario.telefono,
-        email: usuario.email,
-        fecha_de_nacimiento: usuario.fecha_de_nacimiento,
-        id_role: usuario.role_id,
-      },
-      "secreto"
-    );
-    return res.json({
-      success: true,
-      message: "Token creado",
-      data: token,
+    const token = generateToken({ usuario_id: usuario.id, usuario_role: usuario.id_role });
+    let role;
+    if (usuario.id_rol == 1) {
+      role = "user";
+    } else if (usuario.id_rol == 2) {
+      role = "admin";
+    }
+    sendSuccsessResponse(res, 200, {
+      message: "Inicio de sesión de usuario exitoso",
+      token: token,
+      role: role,
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Algo salió mal",
-      error: error.message,
-    });
+    sendErrorResponse(res, 500, "Inicio de sesión de usuario fallido", error);
   }
 };
 
-module.exports = authController;
+authController.getProfile = async (req, res) =>{
+ try {
+   const {usuario_id} = req
+  const profile = await Usuario.findOne({where : {id : usuario_id}})
+  sendSuccsessResponse(res, 200, profile)
+ 
+ } catch (error) {
+  sendErrorResponse(res, 404, "Id no existente", error)
+ }
 
+}
+
+module.exports = authController;

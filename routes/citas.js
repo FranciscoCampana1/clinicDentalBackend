@@ -7,9 +7,8 @@ const isAdmin = require('../middleware/isAdmin')
 
 
 /* GET users listing. */
+router.delete('/deleteCita', verifyToken, authController.deleteCita)
 
-router.get('/', verifyToken, isAdmin, authController.getAll);
-router.get('/getProfile', verifyToken, authController.getProfile);
 
 
 
