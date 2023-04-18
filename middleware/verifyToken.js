@@ -1,23 +1,17 @@
-const jwt = require('jsonwebtoken');
+const { getTokenFromHeader, decodedToken } = require("../_util/token");
+const { sendErrorResponse } = require("../_util/sendResponse");
 const verifyToken = (req, res, next) => {
-    try {
-        //Recoger los datos del header del token
-        const authorization = req.headers.authorization;
-        if (!authorization) {
-            return res.send("token invalido")
-        }
-        //Verificar token
-        //Desustructurar para separar Bearer(strategy) del token(jwt)
-        const [strategy, token] = authorization.split(" ");
-        //verifico el token con el secreto
-        const decoded = jwt.verify(token, 'secreto');
-        //Añado al objeto request que USER eres y que ROL eres para que permanezca en la "sesion"
-        req.userId = decoded.userId;
-        req.roleId = decoded.roleId;
-        console.log(decoded);
-        next();
-    } catch (error) {
-        return res.status(500).send(error.message)
-    }
-}
+  const token = getTokenFromHeader(req.headers);
+  if (!token) {
+    return sendErrorResponse(res, 401, "No se encontró ningún token de autorización");
+  }
+  try {
+    const decoded = decodedToken(token);
+    req.user_id = decoded.user_id;
+    req.user_role = decoded.user_role;
+    next();
+  } catch (error) {
+    sendErrorResponse(res, 400, "Token invalido", error);
+  }
+};
 module.exports = verifyToken;
