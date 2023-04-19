@@ -1,15 +1,14 @@
 var express = require('express');
-const authController = require('../controllers/authController');
+const userController = require('../controllers/userControllers');
 const router = express.Router();
 const verifyToken = require('../middleware/verifyToken')
 const isAdmin = require('../middleware/isAdmin')
 
 
 
-/* GET users listing. */
-
-router.get('/', verifyToken, isAdmin, authController.getAll);
-router.get('/getProfile', verifyToken, authController.getProfile);
+router.get('/', verifyToken, isAdmin, userController.getAll);
+router.get('/getprofile', verifyToken, userController.getProfile);
+router.put('/updateprofile', verifyToken, userController.updateProfile);
 
 
 

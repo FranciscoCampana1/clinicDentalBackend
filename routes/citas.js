@@ -1,16 +1,10 @@
-var express = require('express');
-const authController = require('../controllers/authController');
+var express = require("express");
+const citaController = require('../controllers/citaController')
 const router = express.Router();
-const verifyToken = require('../middleware/verifyToken')
-const isAdmin = require('../middleware/isAdmin')
-
-
+const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
 
 /* GET users listing. */
-router.delete('/deleteCita', verifyToken, authController.deleteCita)
-
-
-
-
+router.post("/createcita", verifyToken, citaController.createCita);
 
 module.exports = router;

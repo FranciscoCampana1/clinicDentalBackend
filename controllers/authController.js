@@ -11,35 +11,7 @@ const {compareHash, hash} = require("../_util/hash");
 const {generateToken} = require("../_util/token");
 const { where } = require("sequelize");
 
-authController.getAll = async (req, res) => {
-  let { page } = req.query;
-  LIMIT = 3;
-  try {
-    const count = await Usuario.count();
-    const pages = getPagesFromCountLimit(count, LIMIT);
-    page = normalizePage(page, pages);
-    const usuarios = await Usuario.findAll({
-      limit: LIMIT,
-      offset: (page - 1) * LIMIT,
-      // attributes: {
-      //   exclude: [],
-      // },
-      // include: [],
-    });
-    sendSuccsessResponse(res, 200, {
-      info: {
-        total_results: count,
-        limit_results: usuarios.length,
-        page: page,
-        total_pages: pages,
-      },
-      results: usuarios,
-    });
-  } catch (error) {
-    sendErrorResponse(res, 500, "Error al recuperar usuarios", error);
-    res.json(error);
-  }
-};
+
 
 authController.register = async (req, res) => {
   try {
@@ -118,16 +90,8 @@ authController.login = async (req, res) => {
   }
 };
 
-authController.getProfile = async (req, res) =>{
- try {
-   const {usuario_id} = req
-  const profile = await Usuario.findOne({where : {id : usuario_id}})
-  sendSuccsessResponse(res, 200, profile)
- 
- } catch (error) {
-  sendErrorResponse(res, 404, "Id no existente", error)
- }
 
-}
+
+
 
 module.exports = authController;
