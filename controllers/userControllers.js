@@ -1,15 +1,11 @@
 const userController = {};
-const { Usuario, Paciente } = require("../models");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const { Usuario } = require("../models");
 const { getPagesFromCountLimit, normalizePage } = require("../_util/util");
 const {
   sendSuccsessResponse,
   sendErrorResponse,
 } = require("../_util/sendResponse");
-const {compareHash, hash} = require("../_util/hash");
-const {generateToken} = require("../_util/token");
-const { where } = require("sequelize");
+
 
 
 
