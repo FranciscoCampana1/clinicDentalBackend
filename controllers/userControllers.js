@@ -16,13 +16,7 @@ userController.getAll = async (req, res) => {
       const count = await Usuario.count();
       const pages = getPagesFromCountLimit(count, LIMIT);
       page = normalizePage(page, pages);
-      const usuarios = await Usuario.findAll({
-        limit: LIMIT,
-        offset: (page - 1) * LIMIT,
-        // attributes: {
-        //   exclude: [],
-        // },
-        // include: [],
+      const usuarios = await Usuario.findAll({limit: LIMIT, offset: (page - 1) * LIMIT, attributes: {exclude: ["password"]},
       });
       sendSuccsessResponse(res, 200, {
         info: {
@@ -46,13 +40,11 @@ userController.getAll = async (req, res) => {
   userController.getProfile = async (req, res) =>{
     try {
       const {usuario_id} = req
-     const profile = await Usuario.findOne({where : {id : usuario_id}})
+     const profile = await Usuario.findOne({where : {id : usuario_id}, attributes: {exclude:["password","createdAt","updatedAt","id_role"]}})
      sendSuccsessResponse(res, 200, profile)
-    
     } catch (error) {
      sendErrorResponse(res, 404, "Id no existente", error)
     }
-   
    };
 
 
