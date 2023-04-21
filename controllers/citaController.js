@@ -26,9 +26,15 @@ citaController.createCita = async (req, res) => {
       include: {
         model: Usuario,
         attributes: {
-          include: [
-            "nombre",
-            "apellidos"
+          exclude: [
+            "password",
+            "id",
+            "telefono",
+            "email",
+            "id_role",
+            "fecha_de_nacimiento",
+            "createdAt",
+            "updatedAt",
           ],
         },
       },
@@ -85,7 +91,7 @@ citaController.updateCita = async (req, res) => {
 citaController.getCitas = async (req, res) => {
   try {
     const paciente = await Paciente.findOne({where: {id_usuario: req.usuario_id}})
-    const cita = await Cita.findAll({where: {id_paciente: paciente.id}})
+    const cita = await Cita.findAll({where: {id_paciente: paciente.id},attributes:{exclude:["createdAt","updatedAt"]}},)
     return sendSuccsessResponse(res, 200, [
       { message: "Tus Citas" },
       cita
@@ -99,7 +105,7 @@ citaController.getCitas = async (req, res) => {
 citaController.getCitasOdontologo = async (req, res) => {
   try {
     const odontologo = await Odontologo.findOne({where: {id_usuario: req.usuario_id}})
-    const cita = await Cita.findAll({where: {id_odontologo: odontologo.id}})
+    const cita = await Cita.findAll({where: {id_odontologo: odontologo.id},attributes:{exclude:["createdAt","updatedAt"]}})
     return sendSuccsessResponse(res, 200, [
       { message: "Tus Citas" },
       cita

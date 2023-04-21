@@ -5,7 +5,7 @@ const {
   sendSuccsessResponse,
   sendErrorResponse,
 } = require("../_util/sendResponse");
-const { compareHash, hash } = require("../_util/hash");
+const { compareHash } = require("../_util/hash");
 const { generateToken } = require("../_util/token");
 
 authController.register = async (req, res) => {
@@ -34,7 +34,7 @@ authController.register = async (req, res) => {
       email: email,
       password: encryptedPassword,
       fecha_de_nacimiento: fecha_de_nacimiento,
-      id_role: 1,
+      id_role: 1, 
     });
     const nuevoPaciente = await Paciente.create({
       id_usuario: nuevoUsuario.id,
@@ -42,8 +42,7 @@ authController.register = async (req, res) => {
 
     return res.json({
       success: true,
-      message: "Usuario creado correctamente",
-      data: { nuevoUsuario, nuevoPaciente },
+      message: "Usuario creado correctamente"
     });
   } catch (error) {
     return res.status(500).json({
@@ -89,8 +88,7 @@ authController.registerOdontologo = async (req, res) => {
 
     return res.json({
       success: true,
-      message: "Odontologo creado correctamente",
-      data: { nuevoUsuario },
+      message: "Odontologo creado correctamente"
     });
   } catch (error) {
     return res.status(500).json({
