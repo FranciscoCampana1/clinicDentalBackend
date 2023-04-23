@@ -93,34 +93,162 @@ Tecnologías utilizadas:
 ---
 
 ## Endpoints
+
 <details>
 <summary>Endpoints</summary>
 
 - AUTH
-    - REGISTER
 
-            POST localhost:3000/usuarios/register
-        body:
-        ``` js
-            {
-                "nombre": "pepe",
-                "apellidos": "bombo clap",
-                "telefono": "666111222",
-                "email": "pepe@pepe.com",
-                "password": "user",
-                "fecha_de_nacimiento":"1993-10-10"
-            }
-        ```
+- REGISTRAR USUARIO
 
-    - LOGIN
+       POST http://localhost:3000/auth/register/
 
-            POST localhost:3000/usuarios/login 
-        body:
-        ``` js
-            {
-                "email": "david@david.com",
-                "password": "admin"
-            }
-        ```
+  body:
+
+  ```js
+   {
+       "nombre": "Luisito",
+       "apellidos": "Comunica",
+       "fecha_de_nacimiento":" 2000-05-05",
+       "email": "luis@luis.com",
+       "telefono": "66678945",
+       "password": "12345678"
+   }
+  ```
+
+- LOGIN
+
+       POST  http://localhost:3000/auth/login
+
+  body:
+
+  ```js
+  {
+      "email": "jose@correo.com",
+      "password":"12345678"
+  }
+  ```
+
+- USUARIO
+
+- PERFIL DE USUARIO
+
+        GET  http://localhost:3000/usuarios/getProfile
+
+  body:
+
+  ```js
+  {
+      "email": "jose@correo.com",
+      "password":"12345678"
+  }
+  ```
+
+- MODIFICAR PERFIL DE USUARIO
+
+      PUT  http://localhost:3000/usuarios/updateprofile
+
+  body:
+
+  ```js
+  {
+      "nombre": "cesar",
+      "apellidos": "Pala"
+      ...
+      ...
+      ...
+  }
+  ```
+
+- CREACION DE CITAS
+
+       POST  http://localhost:3000/citas/createcita/
+
+  body:
+
+  ```js
+  {
+      "id_odontologo":1,
+      "fecha": "2023-05-15",
+      "horario": "20:00:00"
+  }
+  ```
+
+- VER CITAS COMO CLIENTE
+
+       GET  http://localhost:3000/citas/cita
+
+- MODIFICAR CITAS
+
+      PUT  http://localhost:3000/citas/updatecita/1
+
+  body:
+
+  ```js
+      {
+          "fecha": "2023-06-20",
+          "horario": "01:00:00"
+      }
+  ```
+
+- ELIMINAR CITAS
+
+       DELETE  http://localhost:3000/citas/deletecita/1
+
+- ODONTOLOGO
+
+- VER CITAS COMO ODONTOLOGO
+
+       GET  http://localhost:3000/citas/cita/odontologo/
+
+- ADMIN
+
+- VER TODAS LAS CITAS
+
+       GET  http://localhost:3000/usuarios?page=1
+
+- REGISTRAR ODONTOLOGO
+
+       POST http://localhost:3000/auth/register/odontologo
+
+  body:
+
+  ```js
+      {
+          "nombre": "Luisito",
+          "apellidos": "Nocomunica",
+          "fecha_de_nacimiento":" 2000-05-05",
+          "email": "luis@luis.com",
+          "matriculaOdontologo":"123654789",
+          "telefono": "66678945",
+          "password": "12345678"
+       }
+  ```
+
+  </details>
+
+## Team:
+
+**_César Parada_**  
+<a href="https://github.com/Cesarparada" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=orange" target="_blank"></a>
+
+**_Francisco Campana_**  
+<a href="https://github.com/FranciscoCampana1" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+
+## Agradecimientos:
+
+- **_Prof. Fidel Guilart_**
+
+## Contacto
 
 
+
+
+**_Francisco Campana_**  
+<a href="https://github.com/FranciscoCampana1" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
+
+<a href="mailto:cesard.0925@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
+
+<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+
+</p>
