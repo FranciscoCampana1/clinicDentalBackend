@@ -7,7 +7,9 @@ const isAdmin = require('../middleware/isAdmin')
 
 
 router.get('/', verifyToken, isAdmin, userController.getAll);
+
 router.get('/getprofile', verifyToken, userController.getProfile);
+
 router.put('/updateprofile', verifyToken, userController.updateProfile);
 
 

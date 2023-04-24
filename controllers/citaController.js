@@ -57,10 +57,16 @@ citaController.deleteCita = async (req, res) => {
     const deleteCita = await Cita.destroy({
       where: { id: id_cita, id_paciente: paciente.id },
     });
-    return sendSuccsessResponse(res, 200, [
+
+    if(deleteCita == 1){
+      return sendSuccsessResponse(res, 200, [
       { message: "Cita eliminada" },
       deleteCita
     ]);
+    } else{
+      return sendErrorResponse(res, 404, "Para eliminar una cita debe completar correctamente los campos requeridos")
+    }
+    
   } catch (error) {
     return sendErrorResponse(res, 500, "No se puede eliminar la cita", error);
   }
@@ -78,11 +84,15 @@ citaController.updateCita = async (req, res) => {
       { where: { id: id_cita, id_paciente: paciente.id } }
     );
 
-    return sendSuccsessResponse(res, 200, [
+    if(updateCita == 1){
+       return sendSuccsessResponse(res, 200, [
       { message: "Cita modificada" },
       updateCita
-      
-    ]);
+    ])
+    } else {
+      return sendErrorResponse(res, 404, "Debe completar correctamente los campos requeridos")
+    };
+  
   } catch (error) {
     return sendErrorResponse(res, 500, "No se puede modificar la cita", error);
   }

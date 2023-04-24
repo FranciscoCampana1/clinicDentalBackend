@@ -8,6 +8,8 @@ const {
 const { compareHash } = require("../_util/hash");
 const { generateToken } = require("../_util/token");
 
+
+//CONTROLADOR PARA REGISTRAR PACIENTES
 authController.register = async (req, res) => {
   try {
     const {
@@ -53,6 +55,7 @@ authController.register = async (req, res) => {
   }
 };
 
+//CONTROLADOR PARA REGISTRAR ODOTOLOGOS (SOLO UN ADMIN PUEDE REALIZAR ESTOS REGISTROS)
 authController.registerOdontologo = async (req, res) => {
   try {
     const {
@@ -99,6 +102,7 @@ authController.registerOdontologo = async (req, res) => {
   }
 };
 
+//CONTROLADOR PARA LOGEAR USUARIOS
 authController.login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {

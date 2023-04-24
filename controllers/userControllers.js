@@ -5,10 +5,11 @@ const {
   sendSuccsessResponse,
   sendErrorResponse,
 } = require("../_util/sendResponse");
+const {hash} = require("../_util/hash")
 
 
 
-
+//CONTROLADOR PARA VER TODOS LOS USUARIOS REGISTRADOS (SOLO SI ES ADMIN PUEDE VER LOS PACIENTES)
 userController.getAll = async (req, res) => {
     let { page } = req.query;
     LIMIT = 3;
@@ -36,7 +37,7 @@ userController.getAll = async (req, res) => {
 
 
 
-
+  //CONTROLADOR PARA VER SU PROPIO PERFIL UTILIZANDO SU ID
   userController.getProfile = async (req, res) =>{
     try {
       const {usuario_id} = req
@@ -49,7 +50,7 @@ userController.getAll = async (req, res) => {
 
 
    
-
+   //CONTROLADOR PARA MODIFICAR SU PROPIO USUARIO
   userController.updateProfile = async (req, res) => {
     try {
       const id_usuario = req.usuario_id;

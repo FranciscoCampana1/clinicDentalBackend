@@ -22,7 +22,7 @@ module.exports = {
                nombre: "Marta",
                apellidos: "Garcia",
                fecha_de_nacimiento: "2002-09-10",
-               email: "marta@jose.com",
+               email: "marta@marta.com",
                telefono: 1233456789,
                password: hash("12345678"),
                createdAt: new Date(),
@@ -30,10 +30,10 @@ module.exports = {
                id_role: 1
             },
             {
-               nombre: "pepita",
+               nombre: "Robert",
                apellidos: "Pérez",
                fecha_de_nacimiento: "1966-07-23",
-               email: "marta@joseadg.com",
+               email: "robert@robert.com",
                telefono: 1233456789,
                password: hash("12345678"),
                createdAt: new Date(),
@@ -41,10 +41,10 @@ module.exports = {
                id_role:1
             },
             {
-               nombre: "pepa",
+               nombre: "Alice",
                apellidos: "Pérez",
                fecha_de_nacimiento: "1966-07-23",
-               email: "marta@joseadg.com",
+               email: "alice@alice.com",
                telefono: 1233456789,
                password: hash("12345678"),
                createdAt: new Date(),
@@ -63,32 +63,32 @@ module.exports = {
                id_role:1
             },
             {
-               nombre: "odontologo ernesto",
-               apellidos: "Pérez",
+               nombre: "Jack ",
+               apellidos: "Odontologo",
                fecha_de_nacimiento: "1966-07-23",
-               email: "marta@joseadg.com",
+               email: "jack@jack.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:2
             },
             {
-               nombre: "odontologo juan",
-               apellidos: "Pérez",
+               nombre: "Ribs",
+               apellidos: "Odontologo",
                fecha_de_nacimiento: "1966-07-23",
-               email: "marta@joseadg.com",
+               email: "ribs@ribs.com",
                telefono: 1233456789,
-               password:"asdfghjkld",
+               password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
                id_role:2
             },
             {
-               nombre: "odontologo pepe",
-               apellidos: "Pérez",
+               nombre: "Jordi",
+               apellidos: "Odontologo",
                fecha_de_nacimiento: "1966-07-23",
-               email: "Cesar@joseadg.com",
+               email: "jordi@jordi.com",
                telefono: 1233456789,
                password: hash("12345678"),
                createdAt: new Date(),
@@ -101,22 +101,17 @@ module.exports = {
    },
 
    async down(queryInterface, Sequelize) {
-      // await queryInterface.bulkDelete("Usuarios", {
-      //    [Op.or]: [
-      //       { nombre: "Jose" },
-      //       { nombre: "Marta" },
-      //       { nombre: "Ernesto" },
-      //       { nombre: "Vicente" },
-      //       { nombre: "Enrrique" },
-      //       { nombre: "Terry" },
-      //       { nombre: "Sheldon" },
-      //       { nombre: "Terrill" },
-      //       { nombre: "Miles" },
-      //       { nombre: "Mavis" },
-      //       { nombre: "Alison" },
-      //       { nombre: "Oleta" },
-      //       { nombre: "Ewell" },
-      //    ],
-      // });
+      await queryInterface.bulkDelete("usuarios", {
+         [Op.or]: [
+            { nombre: "Jose" },
+            { nombre: "Marta" },
+            { nombre: "Robert" },
+            { nombre: "Alice" },
+            { nombre: "Ernesto" },
+            { nombre: "Jack" },
+            { nombre: "Ribs" },
+            { nombre: "Jordi" }
+         ],
+      });
    },
 };
