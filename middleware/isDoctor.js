@@ -3,7 +3,7 @@ const { sendErrorResponse } = require("../_util/sendResponse");
 const isDoctor = async (req, res, next) => {
   try {
     const odontologo = await Odontologo.findOne({
-      where: { id_usuario: req.user_id },
+      where: { id_usuario: req.usuario_id },
     });
     if (!odontologo) {
       return sendErrorResponse(res, 403, "No tiene los permisos necesarios");

@@ -70,12 +70,12 @@ authController.registerOdontologo = async (req, res) => {
 
     const encryptedPassword = bcrypt.hashSync(password, 10);
 
-    if (nombre === undefined || email === undefined || password === undefined) {
-      return res.json({
-        success: false,
-        message: "Debe completar correctamente todos los campos requeridos",
-      });
-    }
+    // if (nombre === undefined || email === undefined || password === undefined) {
+    //   return res.json({
+    //     success: false,
+    //     message: "Debe completar correctamente todos los campos requeridos",
+    //   });
+    // }
     const nuevoUsuario = await Usuario.create({
       nombre: nombre,
       apellidos: apellidos,
