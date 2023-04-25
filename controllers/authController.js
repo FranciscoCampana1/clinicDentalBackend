@@ -126,10 +126,12 @@ authController.login = async (req, res) => {
       usuario_role: usuario.id_role,
     });
     let role;
-    if (usuario.id_rol == 1) {
+    if (usuario.id_role == 1) {
       role = "user";
-    } else if (usuario.id_rol == 2) {
+    } else if (usuario.id_role == 2) {
       role = "admin";
+    } else if (usuario.id_role == 3) {
+      role = "odontologo";
     }
     sendSuccsessResponse(res, 200, {
       message: "Inicio de sesión de usuario exitoso",

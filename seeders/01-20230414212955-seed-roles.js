@@ -16,6 +16,11 @@ module.exports = {
           createdAt:new Date(),
           updatedAt:new Date()
         },
+        {
+          rolUsuario: "odontologo",
+          createdAt:new Date(),
+          updatedAt:new Date()
+        },
       ],
       {}
     );

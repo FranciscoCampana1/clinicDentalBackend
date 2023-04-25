@@ -14,12 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Role.init({
-    rolUsuario: {
-      type: DataTypes.STRING,
-      enum: ["user", "admin"],
-      default: "user",
-    
-    }
+    rolUsuario: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Role',

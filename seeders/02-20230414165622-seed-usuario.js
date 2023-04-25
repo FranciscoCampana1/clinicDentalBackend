@@ -71,7 +71,7 @@ module.exports = {
                password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
-               id_role:2
+               id_role:3
             },
             {
                nombre: "Ribs",
@@ -82,11 +82,11 @@ module.exports = {
                password: hash("12345678"),
                createdAt: new Date(),
                updatedAt: new Date(),
-               id_role:2
+               id_role:3
             },
             {
-               nombre: "Jordi",
-               apellidos: "Odontologo",
+               nombre: "Juana",
+               apellidos: "Administradora",
                fecha_de_nacimiento: "1966-07-23",
                email: "jordi@jordi.com",
                telefono: 1233456789,
