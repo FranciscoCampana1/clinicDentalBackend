@@ -11,10 +11,8 @@
   </ol>
 </details>
 
-## Sobre el proyecto
----
-
-Este es el proyecto número 4 del bootcamp fullstack developer de Valencia, realizado por Jordi y David. En este proyecto hemos realizado el backend de una clinica dental donde podremos realizar registros de usuarios los cuales se diferenciaran de clientes, doctores y administradores. 
+## Deploy
+<p>Click <a href="clinicdental-production.up.railway.app">hear </a>for go to the databases in Railway</p>
 
 Como clientes podremos: 
 <ol>
