@@ -21,10 +21,10 @@ module.exports = {
         },
         {
           id_usuario:8,
-          matriculaOdontologo: 1234114568,
+          matriculaOdontologo: 1234774568,
           createdAt: new Date(),
           updatedAt: new Date(),
-        },
+        }
       ],
       {}
     );

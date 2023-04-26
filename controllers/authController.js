@@ -8,7 +8,6 @@ const {
 const { compareHash } = require("../_util/hash");
 const { generateToken } = require("../_util/token");
 
-
 //CONTROLADOR PARA REGISTRAR PACIENTES
 authController.register = async (req, res) => {
   try {
@@ -23,12 +22,6 @@ authController.register = async (req, res) => {
 
     const encryptedPassword = bcrypt.hashSync(password, 10);
 
-    if (nombre === undefined || email === undefined || password === undefined) {
-      return res.json({
-        success: false,
-        message: "Debe completar correctamente todos los campos requeridos",
-      });
-    }
     const nuevoUsuario = await Usuario.create({
       nombre: nombre,
       apellidos: apellidos,
@@ -36,22 +29,17 @@ authController.register = async (req, res) => {
       email: email,
       password: encryptedPassword,
       fecha_de_nacimiento: fecha_de_nacimiento,
-      id_role: 1, 
+      id_role: 1,
     });
     const nuevoPaciente = await Paciente.create({
       id_usuario: nuevoUsuario.id,
     });
 
-    return res.json({
-      success: true,
-      message: "Usuario creado correctamente"
+    return sendSuccsessResponse(res, 200, {
+      message: "Usuario creado correctamente",
     });
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Algo salió mal",
-      error: error.message,
-    });
+    return sendErrorResponse(res, 500, "Algo salió mal", error) 
   }
 };
 
@@ -70,12 +58,6 @@ authController.registerOdontologo = async (req, res) => {
 
     const encryptedPassword = bcrypt.hashSync(password, 10);
 
-    // if (nombre === undefined || email === undefined || password === undefined) {
-    //   return res.json({
-    //     success: false,
-    //     message: "Debe completar correctamente todos los campos requeridos",
-    //   });
-    // }
     const nuevoUsuario = await Usuario.create({
       nombre: nombre,
       apellidos: apellidos,
@@ -83,22 +65,20 @@ authController.registerOdontologo = async (req, res) => {
       email: email,
       password: encryptedPassword,
       fecha_de_nacimiento: fecha_de_nacimiento,
-      id_role: 1,
+      id_role: 3,
     });
     await Odontologo.create({
-      id_usuario: nuevoUsuario.id, matriculaOdontologo: matriculaOdontologo
+      id_usuario: nuevoUsuario.id,
+      matriculaOdontologo: matriculaOdontologo,
     });
 
-    return res.json({
-      success: true,
-      message: "Odontologo creado correctamente"
-    });
+    return sendSuccsessResponse(
+      res,
+      200,
+      { message: "Odontologo creado correctamente" }
+    );
   } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Algo salió mal",
-      error: error.message,
-    });
+    return sendErrorResponse(res, 500, { message: "Algo salió mal" }, error);
   }
 };
 

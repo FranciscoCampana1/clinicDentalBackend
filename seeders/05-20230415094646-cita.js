@@ -23,7 +23,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          id_odontologo: 3,
+          id_odontologo: 1,
           id_paciente: 3,
           fecha: "2023-04-20",
           horario: "13:00",
@@ -47,7 +47,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          id_odontologo: 3,
+          id_odontologo: 2,
           id_paciente: 2,
           fecha: "2023-04-20",
           horario: "19:00",

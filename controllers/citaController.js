@@ -102,11 +102,15 @@ citaController.getCitas = async (req, res) => {
   try {
     const paciente = await Paciente.findOne({where: {id_usuario: req.usuario_id}})
     const cita = await Cita.findAll({where: {id_paciente: paciente.id},attributes:{exclude:["createdAt","updatedAt"]}},)
+   
+   if (cita == 0){
+    return sendErrorResponse(res, 404, "No tienes citas")
+   } else{
     return sendSuccsessResponse(res, 200, [
       { message: "Tus Citas" },
       cita
-      
     ]);
+   }    
   } catch (error) {
     
     return sendErrorResponse(res, 500, "No se encontraron citas", error);
@@ -116,11 +120,14 @@ citaController.getCitasOdontologo = async (req, res) => {
   try {
     const odontologo = await Odontologo.findOne({where: {id_usuario: req.usuario_id}})
     const cita = await Cita.findAll({where: {id_odontologo: odontologo.id},attributes:{exclude:["createdAt","updatedAt"]}})
-    return sendSuccsessResponse(res, 200, [
-      { message: "Tus Citas" },
-      cita
-      
-    ]);
+    if (cita == 0){
+      return sendErrorResponse(res, 404, "No tienes citas")
+     } else{
+      return sendSuccsessResponse(res, 200, [
+        { message: "Tus Citas" },
+        cita
+      ]);
+     }  
   } catch (error) {
     
     return sendErrorResponse(res, 500, "No se encontraron citas", error);
