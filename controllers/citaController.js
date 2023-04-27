@@ -49,7 +49,7 @@ citaController.createCita = async (req, res) => {
 };
 
 
-// // BORRAR CITA COMO PACIENTE
+// BORRAR CITA COMO PACIENTE
 citaController.deleteCita = async (req, res) => {
   try {
     const id_cita = req.params.id;
@@ -72,7 +72,7 @@ citaController.deleteCita = async (req, res) => {
   }
 };
 
-// // ACTUALIZAR CITA COMO PACIENTE
+//  ACTUALIZAR CITA COMO PACIENTE
 citaController.updateCita = async (req, res) => {
   try {
     const paciente = await Paciente.findOne({where: {id_usuario: req.usuario_id}})
@@ -97,7 +97,7 @@ citaController.updateCita = async (req, res) => {
     return sendErrorResponse(res, 500, "No se puede modificar la cita", error);
   }
 };
- ///// vER CITAS COMO CLIENTES
+ // VER CITAS COMO CLIENTES
 citaController.getCitas = async (req, res) => {
   try {
     const paciente = await Paciente.findOne({where: {id_usuario: req.usuario_id}})
