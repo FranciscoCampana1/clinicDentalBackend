@@ -131,7 +131,7 @@ Tecnologías utilizadas:
 
 - PERFIL DE USUARIO
 
-        GET  http://localhost:3000/usuarios/getProfile
+        GET  http://localhost:3000/usuarios/getprofile
 
   body:
 
@@ -193,6 +193,8 @@ Tecnologías utilizadas:
 
        DELETE  http://localhost:3000/citas/deletecita/1
 
+       (requiere el id de la cita por params)
+
 - ODONTOLOGO
 
 - VER CITAS COMO ODONTOLOGO
@@ -238,7 +240,6 @@ Tecnologías utilizadas:
 - **_Prof. Fidel Guilart_**
 
 ## Contacto
-
 
 
 
