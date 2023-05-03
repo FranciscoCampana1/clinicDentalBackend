@@ -104,6 +104,7 @@ authController.login = async (req, res) => {
     const token = generateToken({
       usuario_id: usuario.id,
       usuario_role: usuario.id_role,
+      usuario_name: usuario.nombre
     });
     let role;
     if (usuario.id_role == 1) {
