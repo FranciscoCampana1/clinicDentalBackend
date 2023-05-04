@@ -121,7 +121,8 @@ module.exports = {
             { nombre: "Ernesto" },
             { nombre: "Jack" },
             { nombre: "Ribs" },
-            { nombre: "Jordi" }
+            { nombre: "Antonio" },
+            { nombre: "Juana" }
          ],
       });
    },
