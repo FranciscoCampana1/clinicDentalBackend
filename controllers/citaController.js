@@ -141,15 +141,26 @@ citaController.getCitasOdontologo = async (req, res) => {
   try {
     const odontologo = await Odontologo.findOne({
       where: { id_usuario: req.usuario_id },
+      include: {
+        model: Usuario,
+        attributes: {
+          exlude: ["createdAt", "updatedAt"],
+        },
+      },
     });
     const cita = await Cita.findAll({
       where: { id_odontologo: odontologo.id },
       attributes: { exclude: ["createdAt", "updatedAt"] },
     });
+    ;
     if (cita == 0) {
       return sendErrorResponse(res, 404, "No tienes citas");
     } else {
-      return sendSuccsessResponse(res, 200, { message: "Tus Citas" , cita});
+      return sendSuccsessResponse(res, 200, {
+        message: "Tus Citas",
+        odontologo: odontologo.Usuario.nombre,
+        cita: cita,
+      });
     }
   } catch (error) {
     return sendErrorResponse(res, 500, "No se encontraron citas", error);
